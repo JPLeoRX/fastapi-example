@@ -1,10 +1,8 @@
 from fastapi import FastAPI
-from ping_output import PingOutput
+from resource_ping import ping_router
 
 
 app = FastAPI()
 
 
-@app.get("/ping", response_model=PingOutput)
-def ping():
-    return PingOutput('hello', True)
+app.include_router(ping_router)
